@@ -1,5 +1,5 @@
 -- Memo List
-vim.keymap.set('n', '<Leader>ml', ':Memolist<CR>', { noremap=true})
+vim.keymap.set('n', '<Leader>ml', ':MemoList<CR>', { noremap=true})
 
 -- Memo new
 vim.keymap.set('n', '<Leader>mn', ':MemoNew<CR>', { noremap=true})

@@ -72,5 +72,9 @@ require 'lsp-setup'
 -- (completion)
 require 'cmp-setup'
 
+-- [[ Configure jaq-nvim ]]
+-- ((Quikurun plugin))
+--require 'jaq-nvim'
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

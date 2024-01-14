@@ -1,5 +1,5 @@
 vim.keymap.set('n', '<C-s>', ':MarkdownPreview<CR>', { noremap=true})
-return{
+return {
     {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

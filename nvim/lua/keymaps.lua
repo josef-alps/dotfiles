@@ -29,6 +29,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- set jj >> Esc
 vim.keymap.set('i', 'jj', '<ESC>', {silent=true})
+-- set C-h >> Nop
+vim.keymap.set('i', '<C-h>', '<Nop>', {noremap = true, silent = true})
 -- ESC連打でハイライト解除
 vim.keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR><ESC>' , {noremap=true})
 
