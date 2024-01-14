@@ -257,12 +257,29 @@ __fzf_ripgrep() {
   return $ret
 }
 
+
 autoload -Uz fzf-ripgrep-widget
 zle -N fzf-ripgrep-widget
 bindkey "^h" fzf-ripgrep-widget
 
 fdd() {
   local dir
-  dir=$(fd -L -i --hidden --type d 2> /dev/null | fzf-tmux +m) &&
+  dir=$(fd -L -i --hidden --type d 2> /dev/null | fzf-tmux -p 80% +m) &&
   cd "$dir"
 }
+
+tmuxpopup() {
+  local width='80%'
+  local height='80%'
+  local session
+  session=$(tmux display-message -p -F "#{session_name}")
+  
+  if [[ $session == *"popup"* ]]; then
+    tmux detach-client
+  else
+    tmux popup -d "$(tmux display-message -p -F '#{pane_current_path}')" -xC -yC -w"$width" -h"$height" -E  "tmux attach -t popup || tmux new -s popup"
+  fi
+}
+
+zle -N tmuxpopup
+bindkey '^l' tmuxpopup
