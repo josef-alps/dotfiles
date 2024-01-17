@@ -50,3 +50,32 @@ vim.keymap.set('n','[Tag]b', ':tab ba<CR>', {})
 -- buffer command settings
 vim.keymap.set('n', '<C-j>', ':bnext<CR>', {silent = true})
 vim.keymap.set('n', '<C-k>', ':bprevious<CR>', {silent = true})
+
+-- tmuxpopup function
+function tmuxpopup()
+  local width = '80%'
+  local height = '80%'
+  local session = vim.fn.system('tmux display-message -p -F "#{session_name}"')
+
+  if session:find("popup") then
+    vim.fn.jobstart('tmux detach-client', {detach = true})
+  else
+    local current_path = vim.fn.expand('%:p')
+    local tmux_command = string.format('tmux popup -d "%s" -xC -yC -w%s -h%s -E "tmux attach -t popup || tmux new -s popup"', current_path, width, height)
+    vim.fn.jobstart(tmux_command, {detach = true})
+  end
+end
+vim.api.nvim_set_keymap('n', '<C-l>', [[:lua tmuxpopup()<CR>]], { noremap = true, silent = true })
+
+-- set s >> Nop
+vim.keymap.set('n', 's', '<Nop>')
+vim.keymap.set('n', 'ss', ':sp<CR>')
+vim.keymap.set('n', 'sv', ':vs<CR>')
+vim.keymap.set('n', 'sj', '<C-w>j')
+vim.keymap.set('n', 'sk', '<C-w>k')
+vim.keymap.set('n', 'sh', '<C-w>h')
+vim.keymap.set('n', 'sl', '<C-w>l')
+vim.keymap.set('n', 'sJ', '<C-w>J')
+vim.keymap.set('n', 'sK', '<C-w>K')
+vim.keymap.set('n', 'sH', '<C-w>H')
+vim.keymap.set('n', 'sL', '<C-w>L')

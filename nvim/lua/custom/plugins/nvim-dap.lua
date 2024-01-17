@@ -26,17 +26,20 @@ return {
   { 'mfussenegger/nvim-dap'},
   { 'rcarriga/nvim-dap-ui'},
   { "suketa/nvim-dap-ruby", config = true, ft = "ruby" },
-  { "leoluz/nvim-dap-go", ft = "go" },
+  --{ "leoluz/nvim-dap-go", ft = "go" },
   { "mfussenegger/nvim-dap-python", ft = "python" },
 
-  -- nvim-dap-go
-  -- { "dap-go",
-  --   delve = {
-  --     path = "~/.local/share/nvim/mason/packages/delve/dlv",
-  --   }
-  -- },
-  --{ "dap-python",
-  --  string.format('%s/bin/python',venv),
-  --},
+ --nvim-dap-go
+-- { "leouluz/nvim-dap-go",
+--   ft = "go",
+--   delve = {
+--     path = "~/.local/share/nvim/mason/packages/delve/dlv",
+--   }
+-- },
+--  {"nvim-dap-python",
+--    ft = "python",
+--    vim.fn.stdpath("data").."/mason/packages/debugpy/venv/bin/python",
+--    --string.format('%s/bin/python',venv),
+--  },
 }
 
